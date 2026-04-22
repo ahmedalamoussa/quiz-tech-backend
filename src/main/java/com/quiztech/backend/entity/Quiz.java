@@ -1,40 +1,34 @@
 package com.quiztech.backend.entity;
 
+
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "quizzes")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+public class Quiz {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String username;
+    @Column(nullable = false)
+    private String title;
 
-    @Column(nullable = false, unique = true)
-    private String email;
+    @Column(columnDefinition = "TEXT")
+    private String description;
 
     @Column(nullable = false)
-    private String password;
+    private String category;
 
     @Column(nullable = false)
-    private String firstName;
-
-    @Column(nullable = false)
-    private String lastName;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role;
+    private Integer difficulty; // 1-5
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -42,7 +36,14 @@ public class User {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne
+    @JoinColumn(name = "created_by_id", nullable = false)
+    private User createdBy;
+
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Question> questions;
+
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Submission> submissions;
 
     @PrePersist
