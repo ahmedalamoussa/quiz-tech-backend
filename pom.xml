@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.0.5</version>
+		<version>3.2.5</version>  <!-- ✅ Changé : version stable -->
 		<relativePath/>
 	</parent>
 
@@ -19,9 +19,9 @@
 	<description>Plateforme de quiz techniques pour entretiens</description>
 
 	<properties>
-		<java.version>25</java.version>
-		<maven.compiler.source>25</maven.compiler.source>
-		<maven.compiler.target>25</maven.compiler.target>
+		<java.version>17</java.version>  <!-- ✅ Changé : 17 au lieu de 25 -->
+		<maven.compiler.source>17</maven.compiler.source>  <!-- ✅ Changé -->
+		<maven.compiler.target>17</maven.compiler.target>  <!-- ✅ Changé -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -38,8 +38,7 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
-
-		<!-- Jackson - JSON Processing (normalement déjà inclus) -->
+		<!-- Jackson - JSON Processing -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -123,16 +122,6 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.12.1</version>
-				<configuration>
-					<source>25</source>
-					<target>25</target>
 				</configuration>
 			</plugin>
 		</plugins>
