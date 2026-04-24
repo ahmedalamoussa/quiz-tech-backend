@@ -31,3 +31,29 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### SÉCURITÉ - FICHIERS SENSIBLES ###
+# Fichiers d'environnement (mots de passe, clés API)
+.env
+.env.local
+.env.production
+.env.development
+
+# Fichiers de configuration Spring avec secrets
+**/application.properties
+**/application-dev.properties
+**/application-prod.properties
+**/application-secret.properties
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Logs avec infos sensibles
+*.log
+logs/
+
+# Fichiers de configuration système
+.DS_Store
+Thumbs.db
